@@ -46,7 +46,7 @@ type Prompt struct {
 	buffer                 *Buffer
 	renderer               *Renderer
 	executor               Executor
-	history                *History
+	history                HistoryInterface
 	lexer                  Lexer
 	completion             *CompletionManager
 	keyBindings            []KeyBind

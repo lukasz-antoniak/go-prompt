@@ -224,7 +224,19 @@ func WithMaxSuggestion(x uint16) Option {
 // WithHistory to set history expressed by string array.
 func WithHistory(x []string) Option {
 	return func(p *Prompt) error {
-		p.history.histories = x
+		if history, ok := p.history.(*History); ok {
+			history.histories = x
+			history.Clear()
+		}
+
+		return nil
+	}
+}
+
+// WithCustomHistory to set use of own history implementation.
+func WithCustomHistory(history HistoryInterface) Option {
+	return func(p *Prompt) error {
+		p.history = history
 		p.history.Clear()
 		return nil
 	}
