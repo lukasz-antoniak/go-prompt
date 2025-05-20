@@ -10,7 +10,7 @@ require (
 	github.com/pkg/term v1.2.0-beta.2
 	github.com/rivo/uniseg v0.4.7
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394
-	golang.org/x/sys v0.31.0
+	golang.org/x/sys v0.33.0
 )
 
 require github.com/mattn/go-isatty v0.0.20 // indirect

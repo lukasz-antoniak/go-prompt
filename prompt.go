@@ -57,6 +57,7 @@ type Prompt struct {
 	executeOnEnterCallback ExecuteOnEnterCallback
 	skipClose              bool
 	completionReset        bool
+	parseHistoryCommands   bool
 }
 
 // UserInput is the struct that contains the user input context.
@@ -655,6 +656,10 @@ func (p *Prompt) InsertText(text string, overwrite bool) {
 // Insert string into the buffer and move the cursor.
 func (p *Prompt) InsertTextMoveCursor(text string, overwrite bool) {
 	p.buffer.InsertTextMoveCursor(text, p.UserInputColumns(), p.renderer.row, overwrite)
+}
+
+func (p *Prompt) History() HistoryInterface {
+	return p.history
 }
 
 func (p *Prompt) Close() {

@@ -235,6 +235,22 @@ func WithHistory(x []string) Option {
 	}
 }
 
+// WithHistorySize sets the maximum number of history entries
+func WithHistorySize(size int) Option {
+	return func(p *Prompt) error {
+		history, ok := p.history.(*History)
+		if !ok {
+			return fmt.Errorf("cannot use WithHistorySize on a custom HistoryInterface implementation")
+		}
+		if size < 0 {
+			return fmt.Errorf("history size should be greater than or equal to 0, but got %d", size)
+		}
+
+		history.size = size
+		return nil
+	}
+}
+
 // WithCustomHistory to set use of own history implementation.
 func WithCustomHistory(history HistoryInterface) Option {
 	return func(p *Prompt) error {
