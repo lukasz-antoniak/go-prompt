@@ -4,7 +4,7 @@ import (
 	istrings "github.com/elk-language/go-prompt/strings"
 )
 
-// HistoryInterface lets users repalce the build in history.
+// HistoryInterface lets users replace the builtin history.
 type HistoryInterface interface {
 	Add(string)
 	Clear()

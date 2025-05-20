@@ -1,5 +1,7 @@
 package prompt
 
+import "fmt"
+
 // Option is the type to replace default parameters.
 // prompt.New accepts any number of options (this is functional option pattern).
 type Option func(prompt *Prompt) error
@@ -229,7 +231,7 @@ func WithHistory(x []string) Option {
 			history.Clear()
 		}
 
-		return nil
+		return fmt.Errorf("cannot use WithHistory on a custom HistoryInterface implementation")
 	}
 }
 
