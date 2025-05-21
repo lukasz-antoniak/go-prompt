@@ -57,7 +57,6 @@ type Prompt struct {
 	executeOnEnterCallback ExecuteOnEnterCallback
 	skipClose              bool
 	completionReset        bool
-	parseHistoryCommands   bool
 }
 
 // UserInput is the struct that contains the user input context.

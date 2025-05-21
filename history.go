@@ -85,12 +85,14 @@ func (h *History) DeleteAll() {
 	h.selected = 0
 }
 
+const defaultHistorySize = 500
+
 // NewHistory returns new history object.
 func NewHistory() *History {
 	return &History{
 		histories: []string{},
 		tmp:       []string{""},
 		selected:  0,
-		size:      500,
+		size:      defaultHistorySize,
 	}
 }
