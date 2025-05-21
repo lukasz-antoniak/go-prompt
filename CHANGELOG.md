@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 21.05.2025
+
+[Diff](https://github.com/elk-language/go-prompt/compare/v1.2.0...elk-language:go-prompt:v1.3.0)
+
+### Added
+- [PR#26](https://github.com/elk-language/go-prompt/pull/26) - add `HistoryInterface` to let users implement their own custom history
+- Fix multiline editing
+- Add maximum size to history
+- Add new methods to History
+  - `Get`
+  - `Entries`
+  - `DeleteAll`
+
 ## [1.2.0] - 28.03.2025
 
 [Diff](https://github.com/elk-language/go-prompt/compare/v1.1.5...elk-language:go-prompt:v1.2.0)

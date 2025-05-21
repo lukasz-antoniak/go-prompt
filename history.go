@@ -91,6 +91,6 @@ func NewHistory() *History {
 		histories: []string{},
 		tmp:       []string{""},
 		selected:  0,
-		size:      1000,
+		size:      500,
 	}
 }
