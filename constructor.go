@@ -229,6 +229,7 @@ func WithHistory(x []string) Option {
 		if history, ok := p.history.(*History); ok {
 			history.histories = x
 			history.Clear()
+			return nil
 		}
 
 		return fmt.Errorf("cannot use WithHistory on a custom HistoryInterface implementation")
