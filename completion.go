@@ -21,6 +21,7 @@ const (
 type Suggest struct {
 	Text        string
 	Description string
+	Overwrite   bool
 }
 
 // CompletionManager manages which suggestion is now selected.
@@ -39,16 +40,16 @@ type CompletionManager struct {
 }
 
 // GetSelectedSuggestion returns the selected item.
-func (c *CompletionManager) GetSelectedSuggestion() (s Suggest, ok bool) {
+func (c *CompletionManager) GetSelectedSuggestion() (s Suggest, ok bool, overwrite bool) {
 	if c.selected == -1 || c.selected >= len(c.tmp) {
-		return Suggest{}, false
+		return Suggest{}, false, false
 	} else if c.selected < -1 {
 		debug.Assert(false, "must not reach here")
 		c.selected = -1
-		return Suggest{}, false
+		return Suggest{}, false, false
 	}
 
-	return c.tmp[c.selected], true
+	return c.tmp[c.selected], true, c.tmp[c.selected].Overwrite
 }
 
 // GetSuggestions returns the list of suggestion.

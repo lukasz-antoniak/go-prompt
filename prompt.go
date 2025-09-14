@@ -336,12 +336,16 @@ keySwitch:
 		p.buffer.DeleteBeforeCursorRunes(istrings.RuneNumber(p.renderer.indentSize), cols, rows)
 		return true
 	default:
-		if s, ok := p.completion.GetSelectedSuggestion(); ok {
-			w := p.buffer.Document().GetWordBeforeCursorUntilSeparator(p.completion.wordSeparator)
-			if w != "" {
-				p.buffer.DeleteBeforeCursorRunes(istrings.RuneCountInString(w), cols, rows)
+		if s, ok, overwrite := p.completion.GetSelectedSuggestion(); ok {
+			if !overwrite {
+				w := p.buffer.Document().GetWordBeforeCursorUntilSeparator(p.completion.wordSeparator)
+				if w != "" {
+					p.buffer.DeleteBeforeCursorRunes(istrings.RuneCountInString(w), cols, rows)
+				}
+			} else {
+				p.buffer.DeleteBeforeCursorRunes(p.buffer.Document().cursorPosition, cols, rows)
 			}
-			p.buffer.InsertTextMoveCursor(s.Text, cols, rows, false)
+			p.buffer.InsertTextMoveCursor(s.Text, cols, rows, overwrite)
 		}
 		if completionLen > 0 {
 			p.completionReset = true
@@ -357,12 +361,12 @@ func (p *Prompt) updateSuggestions(fn func()) {
 
 	prevStart := p.completion.startCharIndex
 	prevEnd := p.completion.endCharIndex
-	prevSuggestion, prevSelected := p.completion.GetSelectedSuggestion()
+	prevSuggestion, prevSelected, _ := p.completion.GetSelectedSuggestion()
 
 	fn()
 
 	p.completion.shouldUpdate = false
-	newSuggestion, newSelected := p.completion.GetSelectedSuggestion()
+	newSuggestion, newSelected, _ := p.completion.GetSelectedSuggestion()
 
 	// do nothing
 	if !prevSelected && !newSelected {
