@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"testing"
 
-	istrings "github.com/elk-language/go-prompt/strings"
+	istrings "github.com/lukasz-antoniak/go-prompt/strings"
 )
 
 func TestFormatCompletion(t *testing.T) {

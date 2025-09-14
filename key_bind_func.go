@@ -1,7 +1,7 @@
 package prompt
 
 import (
-	istrings "github.com/elk-language/go-prompt/strings"
+	istrings "github.com/lukasz-antoniak/go-prompt/strings"
 )
 
 // GoLineEnd Go to the End of the line

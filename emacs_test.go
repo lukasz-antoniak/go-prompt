@@ -3,7 +3,7 @@ package prompt
 import (
 	"testing"
 
-	istrings "github.com/elk-language/go-prompt/strings"
+	istrings "github.com/lukasz-antoniak/go-prompt/strings"
 )
 
 func TestEmacsKeyBindings(t *testing.T) {

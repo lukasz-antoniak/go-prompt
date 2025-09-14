@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/elk-language/go-prompt"
+	"github.com/lukasz-antoniak/go-prompt"
 )
 
 func main() {
