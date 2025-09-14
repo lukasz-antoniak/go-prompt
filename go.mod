@@ -1,4 +1,4 @@
-module github.com/elk-language/go-prompt
+module github.com/lukasz-antoniak/go-prompt
 
 go 1.24
 
